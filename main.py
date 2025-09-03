@@ -89,7 +89,7 @@ import webbrowser
 
 version = "0.6.5"
 
-donate_link = "https://donate.stripe.com/3csfZLaIj5JE6dO4gg"
+# donate_link = "https://donate.stripe.com/3csfZLaIj5JE6dO4gg"
 
 class WhatsAppChatRenderer:
     def __init__(self, zip_path):
@@ -212,7 +212,8 @@ class WhatsAppChatRenderer:
                 break
         
         if first_line is None:
-            raise ValueError(f"Could not determine the date format of the chat: {chat_content.split('\n')[0]}")
+            var_line = chat_content.split('\n')[0]
+            raise ValueError(f"Could not determine the date format of the chat: {var_line}")
 
         first_line_date = first_line.split(',')[0].replace('[', '')
         # find first non-digit in the date string
@@ -694,8 +695,8 @@ def main():
         print(f"\nAn unexpected error occurred: {e}")
         print(traceback.format_exc())
 
-    if success and input("\nDo you like the tool and want to buy me a coffee? [y/N]: ").strip().lower() == 'y':
-        webbrowser.open(donate_link)
+    # if success and input("\nDo you like the tool and want to buy me a coffee? [y/N]: ").strip().lower() == 'y':
+    #     webbrowser.open(donate_link)
     if not success:
         print("Press enter to exit")
         input()
